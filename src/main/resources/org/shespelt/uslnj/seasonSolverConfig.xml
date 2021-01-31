@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd">
+  <environmentMode>FULL_ASSERT</environmentMode><!-- To slowly prove there are no bugs in this code -->
+  <!-- Domain model configuration -->
+  <solutionClass>org.shespelt.uslnj.domain.Season</solutionClass>
+  <entityClass>org.shespelt.uslnj.domain.Fixture</entityClass>
+  <!-- Score configuration -->
+  <scoreDirectorFactory>
+    <easyScoreCalculatorClass>org.shespelt.uslnj.score.SeasonEasyScoreCalculator</easyScoreCalculatorClass>
+    </scoreDirectorFactory>
+  <!-- Optimization algorithms configuration -->
+  <termination>
+    <secondsSpentLimit>300</secondsSpentLimit>
+  </termination>
+  <!-- Tabu Search performs much better than Late Acceptance (default algo) on this use case -->
+  <constructionHeuristic/>
+
+  <exhaustiveSearch>
+    <exhaustiveSearchType>BRUTE_FORCE</exhaustiveSearchType>
+  </exhaustiveSearch>
+</solver>
